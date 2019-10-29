@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
-# Create your views here.
+from .models import Blog
+
+def allblogs(request):
+    blogs = Blog.objects
+    return render(request, 'blog/allblogs.html',{'blogs': blogs})
+
+def blogDetail(request, blog_id):
+    blogDetail  = get_object_or_404(Blog, pk=blog_id)
+    return render(request, 'blog/blog.html', {'blogDetail' : blogDetail})

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
-{% load staticfiles %}
-  <head>
+    {% load staticfiles %}
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -47,7 +47,7 @@
               <a class="nav-link" target="_blank" href="{% static 'resume.pdf' %}">Resume</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'allblogs' %}">Blog</a>
+              <a class="nav-link active" href="{% url 'allblogs' %}">Blog</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" target="_blank" href="https://www.linkedin.com/in/jagdisharma29/"><i class="fa fa-linkedin"></i> Linked In</a>
@@ -58,38 +58,32 @@
     </header>
 
 <main role="main">
-
-  <section class="jumbotron text-center">
     <div class="container">
-      <h1 class="jumbotron-heading">Hi, I'm Jagdish</h1>
-      <p class="lead text-muted">Hey, My self Jagdish Chandra Sharma And i love to make Websites.</p>
-      <p>
-        <a href="mailto:jagdishcsharma29@gmail.com" class="btn btn-primary my-2">Email Me</a>
-      </p>
-      <img  src="{% static 'jcs.jpg' %}" style="object-fit: cover;" height="300">
-    </div>
-  </section>
-
-  <div class="album py-5 bg-light">
-    <div class="container">
-
-      <div class="row">
-        {% for job in jobs.all %}
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-<!--            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>-->
-            <img class="card-img-top img-fluid" src="{{ job.image.url }}" style="object-fit: cover;"  width="200" height="200" />
-            <div class="card-body">
-              <p class="card-text">{{ job.summary }}</p>
+        <h2 class="text-center pt-2">{{ blogDetail.title }}</h2>
+        <br />
+        <br />
+         <div class="row" >
+             <div class="col-md-12">
+                    <div class="row" style="background-color: #fbfcfc;margin: 5px;padding: 10px;">
+                         <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img class="img-fluid" src="{{ blogDetail.image.url }}" style="object-fit: cover;" height="160" width="160" />
+                                </div>
+                                <div class="col-md-8">
+                                  <p>{{ blogDetail.body }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="text-right">Published on: {{ blogDetail.pub_data|date:"M d, Y"  }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
             </div>
-          </div>
-        </div>
-        {% endfor %}
-
-      </div>
+         </div>
     </div>
-  </div>
-
 </main>
 
 <footer class="text-muted">
